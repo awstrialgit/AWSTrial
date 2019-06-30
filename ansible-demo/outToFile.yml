@@ -1,0 +1,22 @@
+- hosts: web
+  tasks:
+    - name: checkDate
+      command: date
+      register: dateVar
+      become: yes
+    - name: check uptime
+      command: uptime
+      register: uptimeVar
+      become: yes
+    - name: check hostsfile
+      shell: cat /etc/hosts
+      register: hostsVar
+      become: yes
+    - name: writeToFile
+      lineinfile:
+        path: ./output.txt
+        line: "{{ dateVar.stdout }}"
+        line: "{{ uptimeVar.stdout }}"
+        line: "{{ hostsVar.stdout }}"
+        state: present
+        create: yes

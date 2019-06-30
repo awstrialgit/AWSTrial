@@ -1,0 +1,22 @@
+- hosts: web
+  tasks:
+    - name: checkDate
+      command: date
+      register: dateVar
+      become: yes
+    - debug: var=dateVar
+      become: yes
+
+    - name: check uptime
+      command: uptime
+      register: uptimeVar
+      become: yes
+    - debug: var=uptimeVar
+      become: yes
+
+    - name: check hostsfile
+      shell: cat /etc/hosts
+      register: hostsVal
+      become: yes
+    - debug: var=hostsVal
+      become: yes

@@ -1,0 +1,5 @@
+Sat Jun 29 10:43:54 UTC 2019
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost6 localhost6.localdomain6
+172.31.12.176	sshcontroller
+192.168.1.11  laptop

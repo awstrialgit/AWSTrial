@@ -1,0 +1,14 @@
+- hosts: localhost
+  tasks:
+    - name: checkDate
+      command: date
+      register: dateVar
+      become: yes
+
+    - name: writeToFile
+      lineinfile:
+        path: ./output.txt
+        line: "{{ dateVar.stdout }}"
+        state: present
+        create: yes
+      

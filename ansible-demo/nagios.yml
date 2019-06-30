@@ -1,0 +1,17 @@
+- hosts: web # group name from the inventory
+  gather_facts: false
+
+  vars:
+    pack_name: nagios
+    serv_name: nagios
+
+  tasks:
+    - name: Install {{ pack_name }}
+      yum: pkg={{ pack_name }} state=installed
+#      become=yes
+      register: output
+
+    - name: Start {{ serv_name }}
+      service: name={{ serv_name }} state=started
+      become: yes
+
